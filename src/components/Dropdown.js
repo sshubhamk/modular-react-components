@@ -41,7 +41,7 @@ function Dropdown({ options, label, value, onChange }) {
     setIsOpen(!isOpen);
   }
 
-  const placeholder = value ? value : 'Select option';
+  const placeholder = value?.label ? value.label : 'Select option';
 
   return (
     <div className="w-48 relative" ref={elementRef}>
