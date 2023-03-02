@@ -16,38 +16,43 @@ function Dropdown({ options, label, value, onChange }) {
       }
     };
 
-    document.addEventListener('click', handler, true);
+    document.addEventListener("click", handler, true);
 
     return () => {
-      document.removeEventListener('click', handler);
+      document.removeEventListener("click", handler);
     };
-  }, [])
+  }, []);
 
   const renderOptions = options.map((option) => {
     return (
-      <div className="hover:bg-sky-100 rounded cursor-pointer p-1"
-        onClick={() => handleOptionChange(option)} key={option.value}>
+      <div
+        className="hover:bg-sky-100 rounded cursor-pointer p-1"
+        onClick={() => handleOptionChange(option)}
+        key={option.value}
+      >
         {option.label}
       </div>
-    )
+    );
   });
 
   const handleOptionChange = (option) => {
     setIsOpen(false);
     onChange(option);
-  }
+  };
 
   const handleOpen = () => {
     setIsOpen(!isOpen);
-  }
+  };
 
-  const placeholder = value?.label ? value.label : 'Select option';
+  const placeholder = value?.label ? value.label : "Select option";
 
   return (
     <div className="w-48 relative" ref={elementRef}>
       <div> {label} </div>
-      <div className="flex justify-between items-center cursor-pointer border rounded p-3 shadow bg-white w-full"
-        onClick={handleOpen}>
+      <div
+        className="flex justify-between items-center cursor-pointer border rounded p-3 shadow bg-white w-full"
+        onClick={handleOpen}
+      >
         {placeholder}
         <MdKeyboardArrowDown className="text-lg" />
       </div>
@@ -57,7 +62,7 @@ function Dropdown({ options, label, value, onChange }) {
         </div>
       )}
     </div>
-  )
+  );
 }
 
 export default Dropdown;
